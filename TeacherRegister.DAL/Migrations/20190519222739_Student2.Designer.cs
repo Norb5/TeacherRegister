@@ -10,8 +10,8 @@ using TeacherRegister.DAL.EF;
 namespace TeacherRegister.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190519145445_init")]
-    partial class init
+    [Migration("20190519222739_Student2")]
+    partial class Student2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,29 @@ namespace TeacherRegister.DAL.Migrations
                 .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("TeacherRegister.BLL.Student", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("LastName");
+
+                    b.Property<int>("PhoneNumber");
+
+                    b.Property<int?>("TeacherId");
+
+                    b.Property<int>("UserType");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TeacherId");
+
+                    b.ToTable("Student");
+                });
 
             modelBuilder.Entity("TeacherRegister.BLL.Subject", b =>
                 {
@@ -48,22 +71,27 @@ namespace TeacherRegister.DAL.Migrations
 
                     b.Property<DateTime>("RegistrationDate");
 
-                    b.Property<int>("SubjectId");
+                    b.Property<int?>("SubjectId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SubjectId")
-                        .IsUnique();
+                    b.HasIndex("SubjectId");
 
                     b.ToTable("Teacher");
+                });
+
+            modelBuilder.Entity("TeacherRegister.BLL.Student", b =>
+                {
+                    b.HasOne("TeacherRegister.BLL.Teacher", "Teacher")
+                        .WithMany("Students")
+                        .HasForeignKey("TeacherId");
                 });
 
             modelBuilder.Entity("TeacherRegister.BLL.Teacher", b =>
                 {
                     b.HasOne("TeacherRegister.BLL.Subject", "Subject")
-                        .WithOne("Teacher")
-                        .HasForeignKey("TeacherRegister.BLL.Teacher", "SubjectId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .WithMany("Teachers")
+                        .HasForeignKey("SubjectId");
                 });
 #pragma warning restore 612, 618
         }

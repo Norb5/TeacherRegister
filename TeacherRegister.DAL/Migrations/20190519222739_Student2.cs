@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TeacherRegister.DAL.Migrations
 {
-    public partial class init : Migration
+    public partial class Student2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -30,8 +30,8 @@ namespace TeacherRegister.DAL.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
-                    SubjectId = table.Column<int>(nullable: false),
-                    RegistrationDate = table.Column<DateTime>(nullable: false)
+                    RegistrationDate = table.Column<DateTime>(nullable: false),
+                    SubjectId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -41,18 +41,48 @@ namespace TeacherRegister.DAL.Migrations
                         column: x => x.SubjectId,
                         principalTable: "Subject",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Student",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    FirstName = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true),
+                    PhoneNumber = table.Column<int>(nullable: false),
+                    UserType = table.Column<int>(nullable: false),
+                    TeacherId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Student", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Student_Teacher_TeacherId",
+                        column: x => x.TeacherId,
+                        principalTable: "Teacher",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Student_TeacherId",
+                table: "Student",
+                column: "TeacherId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Teacher_SubjectId",
                 table: "Teacher",
-                column: "SubjectId",
-                unique: true);
+                column: "SubjectId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Student");
+
             migrationBuilder.DropTable(
                 name: "Teacher");
 

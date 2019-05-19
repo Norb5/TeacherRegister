@@ -3,14 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeacherRegister.Web", "TeacherRegister.Web\TeacherRegister.Web.csproj", "{3DAAF817-D521-4684-9864-65FF0D4D1AB1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeacherRegister.Web", "TeacherRegister.Web\TeacherRegister.Web.csproj", "{3DAAF817-D521-4684-9864-65FF0D4D1AB1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeacherRegister.BLL", "TeacherRegister.BLL\TeacherRegister.BLL.csproj", "{0DAC2CCA-975C-4780-820D-5D7D7C5AE13B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeacherRegister.BLL", "TeacherRegister.BLL\TeacherRegister.BLL.csproj", "{0DAC2CCA-975C-4780-820D-5D7D7C5AE13B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeacherRegister.DAL", "TeacherRegister.DAL\TeacherRegister.DAL.csproj", "{7874C2C9-FDDE-4741-A95F-20A4FFFCF5F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeacherRegister.DAL", "TeacherRegister.DAL\TeacherRegister.DAL.csproj", "{7874C2C9-FDDE-4741-A95F-20A4FFFCF5F2}"
 	ProjectSection(ProjectDependencies) = postProject
 		{0DAC2CCA-975C-4780-820D-5D7D7C5AE13B} = {0DAC2CCA-975C-4780-820D-5D7D7C5AE13B}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeacherRegister.ViewModels", "TeacherRegister.ViewModels\TeacherRegister.ViewModels.csproj", "{B9FB7B5E-E3E7-4A68-8BDD-7052A9E029DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,6 +32,10 @@ Global
 		{7874C2C9-FDDE-4741-A95F-20A4FFFCF5F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7874C2C9-FDDE-4741-A95F-20A4FFFCF5F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7874C2C9-FDDE-4741-A95F-20A4FFFCF5F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9FB7B5E-E3E7-4A68-8BDD-7052A9E029DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9FB7B5E-E3E7-4A68-8BDD-7052A9E029DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9FB7B5E-E3E7-4A68-8BDD-7052A9E029DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9FB7B5E-E3E7-4A68-8BDD-7052A9E029DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

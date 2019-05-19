@@ -16,7 +16,6 @@ namespace TeacherRegister.DAL.EF
 
         public DbSet<Subject> Subject { get; set; }
         public DbSet<Teacher> Teacher { get; set; }
-
-
+        public DbSet<Student> Student { get; set; }
     }
 }
